@@ -12,8 +12,8 @@ import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import uk.co.purplemonkeys.TimeMonkey.providers.ProjectProvider;
 import uk.co.purplemonkeys.TimeMonkey.providers.Project.Projects;
+import uk.co.purplemonkeys.TimeMonkey.providers.Task.Tasks;
 import uk.co.purplemonkeys.common.http.HttpCommon;
 import android.content.ContentValues;
 import android.content.Context;
@@ -89,16 +89,13 @@ public class ProjectGrabberTask extends AsyncTask<Void, Void, Object>
 
 				// Delete all of the existing records.
 				_appContext.getContentResolver().delete(Projects.CONTENT_URI, null, null);
+				_appContext.getContentResolver().delete(Tasks.CONTENT_URI, null, null);
 				
 				JSONArray jObject = new JSONArray( result.toString() );
 				for (int i = 0; i < jObject.length(); ++i)
 				{
 					JSONObject o = jObject.getJSONObject(i);
-//					Log.e(TAG, o.toString());
-//					Log.e(TAG, o.getString("project"));
 					JSONObject p = new JSONObject(o.getString("project"));
-//					Log.e(TAG, p.getString("id"));
-//					Log.e(TAG, p.getString("name"));
 					
 					ContentValues cv = new ContentValues();
 					cv.put(Projects._ID, p.getInt("id"));
