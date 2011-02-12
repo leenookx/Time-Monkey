@@ -3,8 +3,8 @@ package uk.co.purplemonkeys.TimeMonkey;
 import java.util.Calendar;
 import java.util.Date;
 
-import uk.co.purplemonkeys.TimeMonkey.providers.ProjectProvider;
 import uk.co.purplemonkeys.TimeMonkey.providers.Project.Projects;
+import uk.co.purplemonkeys.TimeMonkey.tasks.ProjectGrabberTask;
 import uk.co.purplemonkeys.common.Common;
 import android.app.Activity;
 import android.content.Intent;
@@ -104,6 +104,7 @@ public class TimeMonkey extends Activity
     			Common.ShowAlertMessage(this, version_info);
     			return true;
     		case R.id.refresh_menu_id:
+				new ProjectGrabberTask( getBaseContext() ).execute();
     			return true;
 			default:
 				break;

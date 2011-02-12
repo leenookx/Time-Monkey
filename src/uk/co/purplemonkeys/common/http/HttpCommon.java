@@ -1,6 +1,9 @@
 package uk.co.purplemonkeys.common.http;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import org.apache.http.Header;
 import org.apache.http.HeaderElement;
@@ -65,4 +68,27 @@ public class HttpCommon
     	
     	return httpclient;
     }
+    
+	public static StringBuilder convertStreamToString(InputStream is) throws IOException{
+
+		BufferedReader reader = new BufferedReader(new InputStreamReader(is,"ISO-8859-1"));
+		StringBuilder sb = new StringBuilder();
+
+		String line = null;
+		try {
+			while ((line = reader.readLine()) != null) {
+
+				sb.append(line + "\n");
+			}
+		} catch (IOException e) {
+			throw e;
+		} finally {
+			try {
+				is.close();
+			} catch (IOException e) {
+				throw e;
+			}
+		}
+		return sb;
+	}
 }
