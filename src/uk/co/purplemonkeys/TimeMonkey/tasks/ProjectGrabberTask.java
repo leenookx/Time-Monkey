@@ -51,28 +51,18 @@ public class ProjectGrabberTask extends AsyncTask<Void, Void, Object>
         	String auth_code = prefs.getString("pref_auth_code", "abc123");
 
         	// Construct data
-//        	JSONObject post_params = new JSONObject();
-//        	post_params.put("auth_code", auth_code);
-        	
-//        	JSONObject sub = new JSONObject();
-//        	
-//        	post_params.put("links", sub);
-        	
-        	HttpGet httppost = new HttpGet(url + "/projects.json");
+        	HttpGet httprequest = new HttpGet(url + "/projects.json");
         	
         	// The progress dialog is non-cancelable, so set a shorter timeout than system's
-        	HttpParams params = httppost.getParams();
+        	HttpParams params = httprequest.getParams();
         	HttpConnectionParams.setConnectionTimeout(params, 30000);
         	HttpConnectionParams.setSoTimeout(params, 30000);
    
-//        	StringEntity s = new StringEntity(post_params.toString());
-//        	s.setContentEncoding("UTF-8");
-//        	s.setContentType("application/json");
-        	httppost.addHeader("Content-Type", "application/json");
-        	httppost.addHeader("authentication-token", auth_code);
+        	httprequest.addHeader("Content-Type", "application/json");
+        	httprequest.addHeader("authentication-token", auth_code);
             
         	// Perform the HTTP GET request
-        	HttpResponse response = mClient.execute(httppost);
+        	HttpResponse response = mClient.execute(httprequest);
         	StringBuilder result;
         	if (response != null) 
         	{
