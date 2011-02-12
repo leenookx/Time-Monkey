@@ -7,6 +7,7 @@ import uk.co.purplemonkeys.TimeMonkey.providers.Project.Projects;
 import uk.co.purplemonkeys.TimeMonkey.providers.Task.Tasks;
 import uk.co.purplemonkeys.TimeMonkey.tasks.ProjectGrabberTask;
 import uk.co.purplemonkeys.TimeMonkey.tasks.TaskGrabberTask;
+import uk.co.purplemonkeys.TimeMonkey.tasks.WorkingTimePosterTask;
 import uk.co.purplemonkeys.common.Common;
 import android.app.Activity;
 import android.content.Context;
@@ -154,7 +155,7 @@ public class TimeMonkey extends Activity
 				
 				testButton.setText(R.string.btnTimer_Stop);
 				
-				TextView txt = (TextView)findViewById(R.id.StartTime);
+				TextView txt = (TextView)findViewById(R.id.tvStartTime);
 				txt.setText( starttime.toLocaleString() );
 			}
 			else
@@ -163,8 +164,18 @@ public class TimeMonkey extends Activity
 				
 				testButton.setText(R.string.btnTimer_Start);
 				
-				TextView txt = (TextView)findViewById(R.id.StartTime);
+				TextView txt = (TextView)findViewById(R.id.tvStartTime);
 				txt.setText( R.string.timer_not_started );
+				
+				Spinner spProject = (Spinner) findViewById(R.id.ProjectSpinner);
+				Cursor curProject = (Cursor)spProject.getSelectedItem();
+		    	int project_id = curProject.getInt( curProject.getColumnIndex(Projects._ID) );
+		    	
+				Spinner spTask = (Spinner) findViewById(R.id.TaskSpinner);
+				Cursor curTask = (Cursor)spTask.getSelectedItem();
+		    	int task_id = curTask.getInt( curTask.getColumnIndex(Projects._ID) );
+		    	
+		    	new WorkingTimePosterTask(getBaseContext(), project_id, task_id, starttime, stoptime).execute();
 			}
 		}	
     }
