@@ -118,38 +118,15 @@ public class ProjectProvider extends ContentProvider
     @Override
     public Uri insert(Uri uri, ContentValues initialValues)
     {
-        // Validate the requested uri
-        if (sUriMatcher.match(uri) != PROJECTS) 
+        switch (sUriMatcher.match(uri)) 
         {
-            throw new IllegalArgumentException("Unknown URI " + uri);
+	        case PROJECTS:
+	        	return insertProject(uri, initialValues);
+	        case TASKS:
+	        	return insertTask(uri, initialValues);
+	        default:
+	        	throw new IllegalArgumentException("Unknown URI " + uri);
         }
-
-        ContentValues values;
-        if (initialValues != null) 
-        {
-            values = new ContentValues(initialValues);
-        } 
-        else 
-        {
-            values = new ContentValues();
-        }
-
-        if (values.containsKey(Projects.TITLE) == false) 
-        {
-            Resources r = Resources.getSystem();
-            values.put(Projects.TITLE, r.getString(android.R.string.untitled));
-        }
-
-        SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        long rowId = db.insert(PROJECT_TABLE_NAME, Projects.TITLE, values);
-        if (rowId > 0) 
-        {
-            Uri noteUri = ContentUris.withAppendedId(Projects.CONTENT_URI, rowId);
-            getContext().getContentResolver().notifyChange(noteUri, null);
-            return noteUri;
-        }
-
-        throw new SQLException("Failed to insert row into " + uri);
     }
 
     @Override
@@ -164,9 +141,7 @@ public class ProjectProvider extends ContentProvider
 	            break;
 	
 	        case TASKS:
-	            String rowId = uri.getPathSegments().get(1);
-	            count = db.delete(TASK_TABLE_NAME, Tasks._ID + "=" + rowId
-	                    + (!TextUtils.isEmpty(where) ? " AND (" + where + ')' : ""), whereArgs);
+	            count = db.delete(TASK_TABLE_NAME, where, whereArgs);
 	            break;
 	
 	        default:
@@ -204,6 +179,66 @@ public class ProjectProvider extends ContentProvider
         return count;
     }
     
+    private Uri insertProject(Uri uri, ContentValues initialValues)
+    {
+        ContentValues values;
+        if (initialValues != null) 
+        {
+            values = new ContentValues(initialValues);
+        } 
+        else 
+        {
+            values = new ContentValues();
+        }
+
+        if (values.containsKey(Projects.TITLE) == false) 
+        {
+            Resources r = Resources.getSystem();
+            values.put(Projects.TITLE, r.getString(android.R.string.untitled));
+        }
+
+        SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+        long rowId = db.insert(PROJECT_TABLE_NAME, Projects.TITLE, values);
+        if (rowId > 0) 
+        {
+            Uri noteUri = ContentUris.withAppendedId(Projects.CONTENT_URI, rowId);
+            getContext().getContentResolver().notifyChange(noteUri, null);
+            return noteUri;
+        }
+
+        throw new SQLException("Failed to insert row into " + uri);    	
+    }
+    
+    private Uri insertTask(Uri uri, ContentValues initialValues)
+    {
+        ContentValues values;
+        if (initialValues != null) 
+        {
+            values = new ContentValues(initialValues);
+        } 
+        else 
+        {
+            values = new ContentValues();
+        }
+
+        if (values.containsKey(Tasks.TITLE) == false) 
+        {
+            Resources r = Resources.getSystem();
+            values.put(Tasks.TITLE, r.getString(android.R.string.untitled));
+        }
+
+        SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+        long rowId = db.insert(TASK_TABLE_NAME, Tasks.TITLE, values);
+        if (rowId > 0) 
+        {
+            Uri noteUri = ContentUris.withAppendedId(Tasks.CONTENT_URI, rowId);
+            getContext().getContentResolver().notifyChange(noteUri, null);
+            return noteUri;
+        }
+
+        throw new SQLException("Failed to insert row into " + uri);
+    }
+
     /**
      * This class helps open, create, and upgrade the database file.
      */

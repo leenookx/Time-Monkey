@@ -21,7 +21,7 @@ public class Task
         /**
          * The content:// style URL for this table
          */
-        public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/Task");
+        public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/Tasks");
 
         /**
          * The MIME type of {@link #CONTENT_URI} providing a directory of notes.
