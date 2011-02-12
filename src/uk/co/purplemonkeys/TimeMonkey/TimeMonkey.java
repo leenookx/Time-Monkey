@@ -3,6 +3,8 @@ package uk.co.purplemonkeys.TimeMonkey;
 import java.util.Calendar;
 import java.util.Date;
 
+import uk.co.purplemonkeys.TimeMonkey.db.Project.Projects;
+import uk.co.purplemonkeys.TimeMonkey.db.ProjectProvider;
 import uk.co.purplemonkeys.common.Common;
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +12,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -18,6 +21,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class TimeMonkey extends Activity 
@@ -26,7 +31,10 @@ public class TimeMonkey extends Activity
 	private String version_info;
 	private Button testButton;
 	private boolean timerRunning = false;
-	Date starttime;
+	private Date starttime;
+	private String[] PROJECTION = new String[] {
+			Projects._ID, Projects.TITLE
+		    };
 	
     /** Called when the activity is first created. */
     @Override
@@ -58,6 +66,24 @@ public class TimeMonkey extends Activity
 		ButtonAction testListener = new ButtonAction();
 		testButton = (Button) findViewById(R.id.btnStartStopTimer);
 		testButton.setOnClickListener(testListener);
+				
+		// Load a Spinner and bind it to a data query.
+		Spinner s2 = (Spinner) findViewById(R.id.ProjectSpinner);
+		ProjectProvider pp = new ProjectProvider();
+		Cursor cur = pp.query(Projects.CONTENT_URI, PROJECTION, null, null, null);
+		     
+		SimpleCursorAdapter adapter2 = new SimpleCursorAdapter(this,
+		    android.R.layout.simple_spinner_item, // Use a template
+		                                          // that displays a
+		                                          // text view
+		    cur, // Give the cursor to the list adapter
+		    new String[] {Projects.TITLE}, // Map the NAME column in the
+		                                         // people database to...
+		    new int[] {android.R.id.text1}); // The "text1" view defined in
+		                                     // the XML template
+		                                         
+		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		s2.setAdapter(adapter2);
     }
     
     @Override
