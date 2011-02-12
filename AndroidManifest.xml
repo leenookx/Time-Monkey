@@ -24,8 +24,8 @@
                     android:excludeFromRecents="true"
                     android:finishOnTaskLaunch="true" />
                     
-        <provider android:name="uk.co.purplemonkeys.TimeMonkey.db.ProjectProvider"
-                android:authorities="uk.co.purplemonkeys.TimeMonkey.db.ProjectProvider" />
+        <provider android:name="uk.co.purplemonkeys.TimeMonkey.providers.ProjectProvider"
+                android:authorities="uk.co.purplemonkeys.TimeMonkey.providers.ProjectProvider" />
     </application>
 
 <uses-permission android:name="android.permission.INTERNET"></uses-permission>

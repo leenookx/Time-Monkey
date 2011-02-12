@@ -1,11 +1,11 @@
-package uk.co.purplemonkeys.TimeMonkey.db;
+package uk.co.purplemonkeys.TimeMonkey.providers;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
 
 public class Task 
 {
-    public static final String AUTHORITY = "uk.co.purplemonkeys.TimeMonkey.db.ProjectProvider";
+    public static final String AUTHORITY = "uk.co.purplemonkeys.TimeMonkey.providers.ProjectProvider";
 
     // This class cannot be instantiated
     private Task() {}

@@ -1,11 +1,11 @@
-package uk.co.purplemonkeys.TimeMonkey.db;
+package uk.co.purplemonkeys.TimeMonkey.providers;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
 
 public class Project 
 {
-    public static final String AUTHORITY = "uk.co.purplemonkeys.TimeMonkey.db.ProjectProvider";
+    public static final String AUTHORITY = "uk.co.purplemonkeys.TimeMonkey.providers.ProjectProvider";
 
     // This class cannot be instantiated
     private Project() {}
@@ -36,7 +36,7 @@ public class Project
         /**
          * The default sort order for this table
          */
-        public static final String DEFAULT_SORT_ORDER = "modified DESC";
+        public static final String DEFAULT_SORT_ORDER = "_ID";
 
         /**
          * The title of the note

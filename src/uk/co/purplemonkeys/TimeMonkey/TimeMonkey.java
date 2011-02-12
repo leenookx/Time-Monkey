@@ -3,8 +3,8 @@ package uk.co.purplemonkeys.TimeMonkey;
 import java.util.Calendar;
 import java.util.Date;
 
-import uk.co.purplemonkeys.TimeMonkey.db.Project.Projects;
-import uk.co.purplemonkeys.TimeMonkey.db.ProjectProvider;
+import uk.co.purplemonkeys.TimeMonkey.providers.ProjectProvider;
+import uk.co.purplemonkeys.TimeMonkey.providers.Project.Projects;
 import uk.co.purplemonkeys.common.Common;
 import android.app.Activity;
 import android.content.Intent;
@@ -69,8 +69,7 @@ public class TimeMonkey extends Activity
 				
 		// Load a Spinner and bind it to a data query.
 		Spinner s2 = (Spinner) findViewById(R.id.ProjectSpinner);
-		ProjectProvider pp = new ProjectProvider();
-		Cursor cur = pp.query(Projects.CONTENT_URI, PROJECTION, null, null, null);
+		Cursor cur = managedQuery(Projects.CONTENT_URI, PROJECTION, null, null, null);
 		     
 		SimpleCursorAdapter adapter2 = new SimpleCursorAdapter(this,
 		    android.R.layout.simple_spinner_item, // Use a template

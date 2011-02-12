@@ -1,9 +1,9 @@
-package uk.co.purplemonkeys.TimeMonkey.db;
+package uk.co.purplemonkeys.TimeMonkey.providers;
 
 import java.util.HashMap;
 
-import uk.co.purplemonkeys.TimeMonkey.db.Project.Projects;
-import uk.co.purplemonkeys.TimeMonkey.db.Task.Tasks;
+import uk.co.purplemonkeys.TimeMonkey.providers.Project.Projects;
+import uk.co.purplemonkeys.TimeMonkey.providers.Task.Tasks;
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -41,8 +41,8 @@ public class ProjectProvider extends ContentProvider
     static 
     {
         sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        sUriMatcher.addURI(Project.AUTHORITY, "projects", PROJECTS);
-        sUriMatcher.addURI(Task.AUTHORITY, "tasks", TASKS);
+        sUriMatcher.addURI(Project.AUTHORITY, "Projects", PROJECTS);
+        sUriMatcher.addURI(Task.AUTHORITY, "Tasks", TASKS);
 
         sProjectProjectionMap = new HashMap<String, String>();
         sProjectProjectionMap.put(Projects._ID, Projects._ID);
@@ -91,7 +91,6 @@ public class ProjectProvider extends ContentProvider
             orderBy = sortOrder;
         }
 
-        // Get the database and run the query
         SQLiteDatabase db = mOpenHelper.getReadableDatabase();
         Cursor c = qb.query(db, projection, selection, selectionArgs, null, null, orderBy);
 
@@ -210,7 +209,8 @@ public class ProjectProvider extends ContentProvider
      */
     private static class DatabaseHelper extends SQLiteOpenHelper 
     {
-        DatabaseHelper(Context context) {
+        DatabaseHelper(Context context) 
+        {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
@@ -229,7 +229,8 @@ public class ProjectProvider extends ContentProvider
         }
 
         @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) 
+        {
             Log.w(TAG, "Upgrading database from version " + oldVersion + " to " 
             			+ newVersion + ", which will destroy all old data");
             db.execSQL("DROP TABLE IF EXISTS " + PROJECT_TABLE_NAME);
