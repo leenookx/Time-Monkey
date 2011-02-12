@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<EditTextPreference android:name="URL"
+	        android:summary="Where to find the Dasher installation."
+	        android:defaultValue="http://localhost:3000"
+	        android:title="URL"
+	        android:key="pref_url" />
+    <EditTextPreference android:name="auth_code"
+            android:summary="Your unique authentication code."
+            android:defaultValue="abc123"
+            android:title="Authentication Code"
+            android:key="pref_auth_code" />
+</PreferenceScreen>
