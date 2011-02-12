@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         >
-    <TextView android:layout_width="fill_parent"
+    <TextView android:id="@+id/tvProject"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dip"
             android:text="@string/project_prompt"
@@ -12,30 +13,51 @@
     <Spinner android:id="@+id/ProjectSpinner" 
             android:layout_width="fill_parent" 
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tvProject"
             />
-    <TextView android:layout_width="fill_parent"
+    <TextView android:id="@+id/tvTask"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dip"
             android:text="@string/task_prompt"
+            android:layout_below="@+id/ProjectSpinner"
             />
     <Spinner android:id="@+id/TaskSpinner" 
             android:layout_width="fill_parent" 
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTask"
             />
     <Button android:text="@string/btnTimer_Start" 
             android:id="@+id/btnStartStopTimer" 
             android:layout_width="fill_parent" 
             android:layout_height="wrap_content"
+            android:layout_below="@+id/TaskSpinner"
             />
-    <TextView android:layout_width="fill_parent"
+    <TextView android:id="@+id/tvStartedAt"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dip"
             android:text="@string/started_at"
+            android:layout_below="@+id/btnStartStopTimer"
             />
-    <TextView android:id="@+id/StartTime" 
+    <TextView android:id="@+id/tvStartTime" 
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dip"
             android:text="@string/timer_not_started"
+            android:layout_below="@+id/tvStartedAt"
             />
-</LinearLayout>
+    <Button android:text="@string/btnNewTask" 
+            android:id="@+id/btnNewTask" 
+            android:layout_width="120px" 
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvStartTime"
+            />
+    <Button android:text="@string/btnNewNote" 
+            android:id="@+id/btnNewNote" 
+            android:layout_width="120px" 
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvStartTime"
+            android:layout_alignRight="@+id/tvStartTime"
+            />
+</RelativeLayout>

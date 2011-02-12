@@ -14,7 +14,9 @@
     <string name="started_at">Started at:</string>
     <string name="started_at_time">00:00:00</string>
     <string name="timer_not_started">(not started)</string>
-
+    <string name="btnNewTask">Add Task</string>
+    <string name="btnNewNote">Add Note</string>
+    
     <string name="crash_notif_ticker_text">Unexpected error, please send a report...</string>
     <string name="crash_notif_title">SpengDroid has crashed...</string>
     <string name="crash_notif_text">Please click here to help fix the issue.</string>
