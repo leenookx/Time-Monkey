@@ -1,5 +1,8 @@
 package uk.co.purplemonkeys.TimeMonkey;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import uk.co.purplemonkeys.common.Common;
 import android.app.Activity;
 import android.content.Intent;
@@ -15,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class TimeMonkey extends Activity 
 {
@@ -22,6 +26,7 @@ public class TimeMonkey extends Activity
 	private String version_info;
 	private Button testButton;
 	private boolean timerRunning = false;
+	Date starttime;
 	
     /** Called when the activity is first created. */
     @Override
@@ -88,7 +93,6 @@ public class TimeMonkey extends Activity
      */
     private class ButtonAction implements OnClickListener
     {
-
 		@Override
 		public void onClick(View v) 
 		{
@@ -96,11 +100,21 @@ public class TimeMonkey extends Activity
 			
 			if (timerRunning)
 			{
+				starttime = Calendar.getInstance().getTime();
+				
 				testButton.setText(R.string.btnTimer_Stop);
+				
+				TextView txt = (TextView)findViewById(R.id.StartTime);
+				txt.setText( starttime.toLocaleString() );
 			}
 			else
 			{
+				Date stoptime = Calendar.getInstance().getTime();
+				
 				testButton.setText(R.string.btnTimer_Start);
+				
+				TextView txt = (TextView)findViewById(R.id.StartTime);
+				txt.setText( R.string.timer_not_started );
 			}
 		}	
     }

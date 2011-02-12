@@ -32,9 +32,10 @@
             android:layout_marginTop="10dip"
             android:text="@string/started_at"
             />
-    <TextView android:layout_width="fill_parent"
+    <TextView android:id="@+id/StartTime" 
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dip"
-            android:text="@string/started_at_time"
+            android:text="@string/timer_not_started"
             />
 </LinearLayout>

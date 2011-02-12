@@ -13,6 +13,7 @@
     <string name="btnTimer_Stop">Stop</string>
     <string name="started_at">Started at:</string>
     <string name="started_at_time">00:00:00</string>
+    <string name="timer_not_started">(not started)</string>
 
     <string name="crash_notif_ticker_text">Unexpected error, please send a report...</string>
     <string name="crash_notif_title">SpengDroid has crashed...</string>
