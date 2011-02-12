@@ -38,16 +38,23 @@ public class TimeMonkey extends Activity
 	private Button testButton;
 	private boolean timerRunning = false;
 	private Date starttime;
-	private String[] PROJECTION = new String[] {
-			Projects._ID, Projects.TITLE
-		    };
-	private String[] TASKS_PROJECTION = new String[] {
-			Tasks._ID, Tasks.TITLE
-		    };
+	private String[] PROJECTION = new String[] 
+    {
+        Projects._ID, 
+        Projects.TITLE
+    };
+	private String[] TASKS_PROJECTION = new String[] 
+    {
+        Tasks._ID, 
+        Tasks.TITLE
+	};
 	
-    /** Called when the activity is first created. */
+    /** 
+     * Called when the activity is first created. 
+     */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) 
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
@@ -102,7 +109,8 @@ public class TimeMonkey extends Activity
     }
     
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) 
+    {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.timemonkey, menu);
         return true;
@@ -166,13 +174,11 @@ public class TimeMonkey extends Activity
     	private final static String TAG = "SpinnerListener";
     	
     	private Context _context;
-    	private Spinner _spProjects;
     	private Spinner _spTasks;
     	
     	SpinnerListener(Context c, Spinner spProjects, Spinner spTasks)
     	{
     		_context = c;
-    		_spProjects = spProjects;
     		_spTasks = spTasks;
     	}
     	
