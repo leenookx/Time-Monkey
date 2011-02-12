@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+    <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:text="@string/project_prompt"
+            />
+    <Spinner android:id="@+id/ProjectSpinner" 
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            />
+    <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:text="@string/task_prompt"
+            />
+    <Spinner android:id="@+id/TaskSpinner" 
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            />
+    <Button android:text="@string/btnStartStopTimer" 
+            android:id="@+id/btnStartStopTimer" 
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            />
+    <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:text="@string/started_at"
+            />
+    <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dip"
+            android:text="@string/started_at_time"
+            />
 </LinearLayout>

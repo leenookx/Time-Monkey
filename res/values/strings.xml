@@ -5,6 +5,12 @@
     <string name="error_toast">Error! Don\'t panic!</string>
     <string name="menu_preferences">Preferences</string>
     <string name="menu_about">About</string>
+    
+    <string name="project_prompt">Please select project</string>
+    <string name="task_prompt">Please select task</string>
+    <string name="btnStartStopTimer">Start</string>
+    <string name="started_at">Started at:</string>
+    <string name="started_at_time">00:00:00</string>
 
     <string name="crash_notif_ticker_text">Unexpected error, please send a report...</string>
     <string name="crash_notif_title">SpengDroid has crashed...</string>
