@@ -64,6 +64,8 @@ public class TimeMonkey extends Activity
     		case R.id.about_menu_id:
     			Common.ShowAlertMessage(this, version_info);
     			return true;
+    		case R.id.refresh_menu_id:
+    			return true;
 			default:
 				break;
     	}

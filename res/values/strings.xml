@@ -5,6 +5,7 @@
     <string name="error_toast">Error! Don\'t panic!</string>
     <string name="menu_preferences">Preferences</string>
     <string name="menu_about">About</string>
+    <string name="menu_refresh">Refresh</string>
     
     <string name="project_prompt">Please select project</string>
     <string name="task_prompt">Please select task</string>
