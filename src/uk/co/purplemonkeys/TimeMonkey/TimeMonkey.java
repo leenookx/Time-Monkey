@@ -12,11 +12,16 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class TimeMonkey extends Activity 
 {
 	private SharedPreferences preferences;
 	private String version_info;
+	private Button testButton;
+	private boolean timerRunning = false;
 	
     /** Called when the activity is first created. */
     @Override
@@ -44,6 +49,10 @@ public class TimeMonkey extends Activity
 		{
 			startActivity(new Intent(this, Preferences.class));
 		}
+		
+		ButtonAction testListener = new ButtonAction();
+		testButton = (Button) findViewById(R.id.btnStartStopTimer);
+		testButton.setOnClickListener(testListener);
     }
     
     @Override
@@ -71,5 +80,28 @@ public class TimeMonkey extends Activity
     	}
 
     	return super.onOptionsItemSelected(item);
-    }    
+    }
+
+    /**
+     * Class for handling click events on the Start/Stop timer button.
+     * @author "leenookx"
+     */
+    private class ButtonAction implements OnClickListener
+    {
+
+		@Override
+		public void onClick(View v) 
+		{
+			timerRunning = !timerRunning;
+			
+			if (timerRunning)
+			{
+				testButton.setText(R.string.btnTimer_Stop);
+			}
+			else
+			{
+				testButton.setText(R.string.btnTimer_Start);
+			}
+		}	
+    }
 }

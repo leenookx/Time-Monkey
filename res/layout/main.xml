@@ -22,7 +22,7 @@
             android:layout_width="fill_parent" 
             android:layout_height="wrap_content"
             />
-    <Button android:text="@string/btnStartStopTimer" 
+    <Button android:text="@string/btnTimer_Start" 
             android:id="@+id/btnStartStopTimer" 
             android:layout_width="fill_parent" 
             android:layout_height="wrap_content"

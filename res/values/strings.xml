@@ -9,7 +9,8 @@
     
     <string name="project_prompt">Please select project</string>
     <string name="task_prompt">Please select task</string>
-    <string name="btnStartStopTimer">Start</string>
+    <string name="btnTimer_Start">Start</string>
+    <string name="btnTimer_Stop">Stop</string>
     <string name="started_at">Started at:</string>
     <string name="started_at_time">00:00:00</string>
 
